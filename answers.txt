@@ -1,0 +1,9 @@
+Sophia Cooper 
+Loretta Chan
+
+1. When you try to encrypt a very long message (longer than n bits after message_encode), the entire message is not encrypted (or preserved when you try to decode it). This happens because we take the message mod n, and when the message m is greater than n, m mod n will return a different number. Therefore, the part that gets encrypted is only the remainder of the entire message when taken mod m, so when you try to decrypt this, you will not be able to recover the entire message. 
+
+When cryptosystems that use RSA need to encrypt a very large message, they will hash the message first, and then encrypt the result to ensure that they will stay within a legal number of bits and will be able to properly decrypt the message.
+
+
+2.  When you encrypt the same message twice with the same public key, it will have the same result both times. An attacker could definitely take advantage of this, such as in the case where you are only encrypting a 0 or a 1. If the attacker can eavesdrop and discover the encrypted value, they will be able to tell if the next encrypted value is the same or not (because if it is the same number, it will have the same encrypted result). Therefore, if different public keys are not used each time, an input would be encrypted to the same value each time and could make the system vulnerable to an attacker.y
